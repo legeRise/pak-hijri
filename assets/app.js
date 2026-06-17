@@ -39,6 +39,7 @@ const els = {
   latestEndpoint: document.querySelector("#latestEndpoint"),
   monthRows: document.querySelector("#monthRows"),
   yearTitle: document.querySelector("#yearTitle"),
+  yearJsonLink: document.querySelector("#yearJsonLink"),
   adminToggle: document.querySelector("#adminToggle"),
   adminPanel: document.querySelector("#adminPanel"),
   adminClose: document.querySelector("#adminClose"),
@@ -112,9 +113,18 @@ function renderEndpoint() {
   els.latestEndpoint.textContent = new URL("data/latest.json", window.location.href).href;
 }
 
+async function fetchJson(path) {
+  const url = new URL(path, window.location.href);
+  url.searchParams.set("v", Date.now().toString());
+  const response = await fetch(url.href, { cache: "no-store" });
+  if (!response.ok) throw new Error(`Could not load ${path}: ${response.status}`);
+  return response.json();
+}
+
 function renderMonths() {
   const months = state.yearData?.months || [];
   els.yearTitle.textContent = `Year ${state.yearData?.hijri_year || ""}`;
+  els.yearJsonLink.href = state.latestData?.source || `data/${state.yearData?.hijri_year || 1448}.json`;
   els.monthRows.innerHTML = months
     .map((month) => `
       <tr>
@@ -405,10 +415,8 @@ async function init() {
   inferRepoFields();
   renderEndpoint();
 
-  const latestResponse = await fetch("data/latest.json");
-  state.latestData = await latestResponse.json();
-  const yearResponse = await fetch(state.latestData.source || "data/1448.json");
-  state.yearData = await yearResponse.json();
+  state.latestData = await fetchJson("data/latest.json");
+  state.yearData = await fetchJson(state.latestData.source || "data/1448.json");
 
   renderMonths();
   renderLatest();
