@@ -8,11 +8,18 @@
     {
       "month": 1,
       "month_name": "Muharram",
-      "gregorian_start_date": "",
-      "status": "pending",
-      "confidence": "unknown",
-      "sources": [],
-      "notes": ""
+      "gregorian_start_date": "2026-06-17",
+      "status": "verified",
+      "confidence": "high",
+      "sources": [
+        {
+          "source_name": "Associated Press of Pakistan (APP)",
+          "description": "APP reported the Central Ruet-e-Hilal Committee announcement that the Muharram-ul-Haram 1448 AH moon was not sighted in Pakistan and that 1 Muharram would fall on Wednesday, June 17, 2026.",
+          "url": "https://www.app.com.pk/national/muharram-to-begin-on-june-17-as-moon-not-sighted-in-pakistan/",
+          "published_at": "2026-06-15"
+        }
+      ],
+      "notes": "The Central Ruet-e-Hilal Committee announced that the Muharram-ul-Haram 1448 AH moon was not sighted in Pakistan; therefore 1 Muharram 1448 falls on Wednesday, June 17, 2026."
     },
     {
       "month": 2,
@@ -115,4 +122,3 @@
     }
   ]
 }
-
