@@ -75,13 +75,6 @@ Year files such as `data/1448.json` are the archive. They store all month starts
 
 `data/latest.json` is the small pointer apps fetch first. It points to the active month and the year file that contains the full record.
 
-## Admin Updates
-
-The GitHub Pages admin UI is public to view, but it cannot save without a GitHub token.
-
-Use a fine-grained GitHub token limited to this repository with contents read/write permission. Do not use a broad token that can edit all repositories.
-
-The admin UI locks the commit target to the current GitHub Pages repository. If this site is later served from a custom domain, set `repoOwner` and `repoName` once in `assets/app.js`.
 
 ## Status Values
 
