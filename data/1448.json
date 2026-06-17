@@ -1,0 +1,118 @@
+{
+  "$schema": "../schemas/year.schema.json",
+  "country": "PK",
+  "country_name": "Pakistan",
+  "hijri_year": 1448,
+  "calendar_basis": "pakistan_moon_sighting",
+  "months": [
+    {
+      "month": 1,
+      "month_name": "Muharram",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 2,
+      "month_name": "Safar",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 3,
+      "month_name": "Rabi al-Awwal",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 4,
+      "month_name": "Rabi al-Thani",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 5,
+      "month_name": "Jumada al-Awwal",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 6,
+      "month_name": "Jumada al-Thani",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 7,
+      "month_name": "Rajab",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 8,
+      "month_name": "Sha'ban",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 9,
+      "month_name": "Ramadan",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 10,
+      "month_name": "Shawwal",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 11,
+      "month_name": "Dhu al-Qadah",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    },
+    {
+      "month": 12,
+      "month_name": "Dhu al-Hijjah",
+      "gregorian_start_date": "",
+      "status": "pending",
+      "confidence": "unknown",
+      "sources": [],
+      "notes": ""
+    }
+  ]
+}
+

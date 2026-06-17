@@ -1,0 +1,13 @@
+{
+  "country": "PK",
+  "country_name": "Pakistan",
+  "hijri_year": 1448,
+  "month": 1,
+  "month_name": "Muharram",
+  "month_start": "",
+  "status": "pending",
+  "confidence": "unknown",
+  "updated_at": "2026-06-17",
+  "source": "data/1448.json",
+  "notes": "Starter placeholder. Replace with verified Pakistan moon-sighting data before production use."
+}

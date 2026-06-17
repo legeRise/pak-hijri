@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pak Hijri</title>
+    <meta name="description" content="Source-backed Hijri month-start data for Pakistan.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Pakistan moon-sighting dataset</p>
+        <h1>Pak Hijri</h1>
+        <p class="lede">Source-backed Hijri month starts for Pakistan, exposed as simple static JSON.</p>
+      </div>
+      <div class="header-actions">
+        <a class="button secondary" href="data/latest.json">View API JSON</a>
+        <button class="button" id="adminToggle" type="button">Admin mode</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="status-band" aria-label="Current data">
+        <div>
+          <span class="label">Active month</span>
+          <strong id="activeMonth">Loading</strong>
+        </div>
+        <div>
+          <span class="label">Month start</span>
+          <strong id="monthStart">Loading</strong>
+        </div>
+        <div>
+          <span class="label">Status</span>
+          <strong id="activeStatus">Loading</strong>
+        </div>
+        <div>
+          <span class="label">Today from data</span>
+          <strong id="computedToday">Loading</strong>
+        </div>
+      </section>
+
+      <section class="layout">
+        <div class="main-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="yearTitle">Year data</h2>
+              <p>Each row is one Pakistan Hijri month-start record.</p>
+            </div>
+            <a class="text-link" href="data/1448.json">Open year JSON</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Start date</th>
+                  <th>Status</th>
+                  <th>Confidence</th>
+                  <th>Sources</th>
+                </tr>
+              </thead>
+              <tbody id="monthRows">
+                <tr>
+                  <td colspan="5">Loading data</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <h2>API Quick Start</h2>
+          <p>`latest.json` gives the currently active Pakistan Hijri month start. Your app calculates the day number from that date.</p>
+          <pre><code>GET <span id="latestEndpoint">data/latest.json</span></code></pre>
+          <pre><code>day = diff(today, month_start) + 1</code></pre>
+          <p>Use the result normally until day 28. On day 29 or 30, hit the endpoint again because the next month may already be published.</p>
+        </aside>
+      </section>
+
+      <section class="api-docs" aria-label="API documentation">
+        <div class="section-head plain">
+          <div>
+            <h2>Integration Guide</h2>
+            <p>For apps that want to show Pakistan source-backed Hijri dates.</p>
+          </div>
+        </div>
+
+        <div class="docs-grid">
+          <article>
+            <h3>1. Fetch Latest</h3>
+            <p>Request the full `latest.json` URL shown above. It does not return today's Hijri day. It returns the start date of the active Pakistan Hijri month.</p>
+            <pre><code>{
+  "hijri_year": 1448,
+  "month": 1,
+  "month_name": "Muharram",
+  "month_start": "2026-06-17",
+  "status": "verified"
+}</code></pre>
+          </article>
+          <article>
+            <h3>2. Calculate Daily</h3>
+            <p>Each day, calculate the current Hijri day from `month_start` using the device/app Gregorian date.</p>
+            <pre><code>day =
+  daysBetween(today, month_start) + 1</code></pre>
+            <p>Example: if `month_start` is `2026-06-17`, then `2026-06-17` is day 1 and `2026-06-18` is day 2.</p>
+          </article>
+          <article>
+            <h3>3. Refetch Near End</h3>
+            <p>Hijri months are 29 or 30 days. Day 29 means the next month might begin tomorrow. Day 30 means the app should check again before trusting the old month.</p>
+            <pre><code>if day &lt;= 28:
+  show date
+if day == 29 or day == 30:
+  refetch latest.json
+if day &gt; 30:
+  data is stale</code></pre>
+          </article>
+        </div>
+
+        <div class="docs-grid secondary-docs">
+          <article>
+            <h3>When Data Is Stale</h3>
+            <p>If the calculated day becomes 31 and `latest.json` still points to the old month, the Pakistan dataset has not been updated yet. Your app should stop extending that month.</p>
+          </article>
+          <article>
+            <h3>Year Files</h3>
+            <p>`data/1448.json`, `data/1449.json`, and later year files are the archive. `latest.json` is only the small pointer apps fetch first.</p>
+          </article>
+          <article>
+            <h3>Sources</h3>
+            <p>Each verified month can include one or more sources. A source needs a name, and may also include a description, date, and link.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <aside class="admin-panel" id="adminPanel" aria-hidden="true">
+      <div class="admin-shell">
+        <div class="admin-head">
+          <div>
+            <p class="eyebrow">Private editor</p>
+            <h2>Update Month Data</h2>
+          </div>
+          <button class="icon-button" id="adminClose" type="button" aria-label="Close admin panel">x</button>
+        </div>
+
+        <div class="notice">
+          Public visitors can view this page, but saving requires a GitHub token with permission to commit to this repo.
+        </div>
+
+        <form id="adminForm" autocomplete="off">
+          <div class="repo-lock">
+            <span class="label">Commit target</span>
+            <strong id="repoTarget">Detecting repository</strong>
+            <p>This target is locked to the current GitHub Pages repo. Use a fine-grained GitHub token limited to this repository.</p>
+          </div>
+
+          <div class="form-grid single-field">
+            <label>
+              Branch
+              <input id="repoBranch" name="repoBranch" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" value="main" readonly>
+            </label>
+            <label>
+              Token
+              <input id="githubToken" name="githubToken" type="password" autocomplete="new-password" autocapitalize="off" spellcheck="false" data-lpignore="true" placeholder="GitHub fine-grained token">
+            </label>
+          </div>
+
+          <hr>
+
+          <div class="form-grid">
+            <label>
+              Hijri year
+              <input id="hijriYear" name="hijriYear" type="number" value="1448" min="1">
+            </label>
+            <label>
+              Month
+              <select id="monthSelect" name="monthSelect"></select>
+            </label>
+            <label>
+              Gregorian start date
+              <input id="monthStartInput" name="monthStartInput" type="date">
+            </label>
+            <label>
+              Status
+              <select id="statusInput" name="statusInput">
+                <option value="pending">pending</option>
+                <option value="verified">verified</option>
+                <option value="estimated">estimated</option>
+                <option value="disputed">disputed</option>
+              </select>
+            </label>
+            <label>
+              Confidence
+              <select id="confidenceInput" name="confidenceInput">
+                <option value="unknown">unknown</option>
+                <option value="low">low</option>
+                <option value="medium">medium</option>
+                <option value="high">high</option>
+              </select>
+            </label>
+            <label class="span-2">
+              Notes
+              <textarea id="notesInput" name="notesInput" rows="3" placeholder="Short note about this month record"></textarea>
+            </label>
+          </div>
+
+          <div class="source-editor">
+            <div class="source-head">
+              <h3>Sources</h3>
+              <button class="button secondary compact" id="addSource" type="button">Add source</button>
+            </div>
+            <div id="sourcesList" class="sources-list"></div>
+          </div>
+
+          <label class="checkbox-row">
+            <input id="updateLatest" name="updateLatest" type="checkbox" checked>
+            Also update data/latest.json to this month
+          </label>
+
+          <div class="admin-actions">
+            <button class="button secondary" id="downloadJson" type="button">Download JSON</button>
+            <button class="button" type="submit">Commit to GitHub</button>
+          </div>
+        </form>
+
+        <pre class="log" id="adminLog" aria-live="polite"></pre>
+      </div>
+    </aside>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
