@@ -2,12 +2,12 @@
   "country": "PK",
   "country_name": "Pakistan",
   "hijri_year": 1448,
-  "month": 1,
-  "month_name": "Muharram",
-  "month_start": "2026-06-17",
+  "month": 2,
+  "month_name": "Safar",
+  "month_start": "2026-07-16",
   "status": "verified",
   "confidence": "high",
-  "updated_at": "2026-06-17",
+  "updated_at": "2026-07-16",
   "source": "data/1448.json",
-  "notes": "The Central Ruet-e-Hilal Committee announced that the Muharram-ul-Haram 1448 AH moon was not sighted in Pakistan; therefore 1 Muharram 1448 falls on Wednesday, June 17, 2026."
+  "notes": ""
 }
