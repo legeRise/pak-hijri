@@ -40,11 +40,18 @@
     {
       "month": 3,
       "month_name": "Rabi al-Awwal",
-      "gregorian_start_date": "",
-      "status": "pending",
-      "confidence": "unknown",
-      "sources": [],
-      "notes": ""
+      "gregorian_start_date": "2026-08-15",
+      "status": "verified",
+      "confidence": "high",
+      "sources": [
+        {
+          "source_name": "Radio Pakistan",
+          "description": "Radio Pakistan reported the Central Ruet-e-Hilal Committee announcement that the Rabi-ul-Awwal 1448 AH moon was not sighted in Pakistan and that 1 Rabi-ul-Awwal would fall on Saturday, August 15, 2026.",
+          "url": "https://www.radio.gov.pk/13-08-2026/moon-not-sighted-first-of-rabi-ul-awwal-on-saturday",
+          "published_at": "2026-08-13"
+        }
+      ],
+      "notes": "The Central Ruet-e-Hilal Committee announced that the Rabi-ul-Awwal 1448 AH moon was not sighted in Pakistan; therefore 1 Rabi-ul-Awwal 1448 falls on Saturday, August 15, 2026."
     },
     {
       "month": 4,
