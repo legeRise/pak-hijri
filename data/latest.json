@@ -2,12 +2,12 @@
   "country": "PK",
   "country_name": "Pakistan",
   "hijri_year": 1448,
-  "month": 2,
-  "month_name": "Safar",
-  "month_start": "2026-07-16",
+  "month": 3,
+  "month_name": "Rabi al-Awwal",
+  "month_start": "2026-08-15",
   "status": "verified",
   "confidence": "high",
-  "updated_at": "2026-07-16",
+  "updated_at": "2026-08-15",
   "source": "data/1448.json",
   "notes": ""
 }
