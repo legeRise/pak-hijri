@@ -56,11 +56,18 @@
     {
       "month": 4,
       "month_name": "Rabi al-Thani",
-      "gregorian_start_date": "",
-      "status": "pending",
-      "confidence": "unknown",
-      "sources": [],
-      "notes": ""
+      "gregorian_start_date": "2026-09-14",
+      "status": "verified",
+      "confidence": "high",
+      "sources": [
+        {
+          "source_name": "AAJ News",
+          "description": "AAJ News reported the Central Ruet-e-Hilal Committee announcement that the Rabi al-Thani 1448 AH moon was not sighted in Pakistan and that 1 Rabi al-Thani would fall on Monday, September 14, 2026. The report states that the Ministry of Religious Affairs issued the notification after the committee's announcement.",
+          "url": "https://www.aaj.tv/news/30517000",
+          "published_at": "2026-09-12"
+        }
+      ],
+      "notes": "The Central Ruet-e-Hilal Committee announced that the Rabi al-Thani 1448 AH moon was not sighted in Pakistan; therefore 1 Rabi al-Thani 1448 falls on Monday, September 14, 2026."
     },
     {
       "month": 5,
