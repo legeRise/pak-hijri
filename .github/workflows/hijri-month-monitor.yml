@@ -5,6 +5,12 @@ on:
   schedule:
     - cron: "0 0,5,10,15,20 * * *"
   workflow_dispatch:
+    inputs:
+      force_research:
+        description: "Run Gemini research now even if the month is not due (safe test; never edits calendar files)"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -30,6 +36,7 @@ jobs:
         id: monitor
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORCE_RESEARCH: ${{ inputs.force_research || false }}
         run: python3 scripts/monitor_hijri.py
 
       - name: Open pull request for validated update
@@ -70,7 +77,7 @@ jobs:
           retention-days: 14
 
       - name: Open a review issue when evidence is uncertain
-        if: steps.monitor.outputs.action == 'needs_review'
+        if: steps.monitor.outputs.action == 'needs_review' && github.event.inputs.force_research != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
