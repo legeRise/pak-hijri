@@ -75,10 +75,6 @@ def stop(action, reason, **extra):
 
 
 def main():
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        return stop("needs_review", "Missing GEMINI_API_KEY repository secret.")
-
     latest = json.loads(LATEST_PATH.read_text(encoding="utf-8"))
     today = datetime.now(TZ).date()
     last_start = date.fromisoformat(latest["month_start"])
@@ -92,6 +88,11 @@ def main():
             latest_month_start=last_start.isoformat(),
             elapsed_days=elapsed,
         )
+
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        return stop("needs_review", "Missing GEMINI_API_KEY repository secret.",
+                    pakistan_date=today.isoformat(), elapsed_days=elapsed)
 
     current_year = int(latest["hijri_year"])
     current_month = int(latest["month"])
