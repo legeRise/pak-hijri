@@ -79,14 +79,17 @@ def main():
     today = datetime.now(TZ).date()
     last_start = date.fromisoformat(latest["month_start"])
     elapsed = (today - last_start).days
+    force_research = os.environ.get("FORCE_RESEARCH", "").strip().lower() == "true"
 
-    if elapsed < 28:
+    if elapsed < 28 and not force_research:
         return stop(
             "no_change",
-            f"Only {elapsed} days have elapsed since {last_start}; research is inactive until day 28.",
+            f"Only {elapsed} days have elapsed since {last_start}; research is inactive until day 28. "
+            "Use the manual workflow's force_research option to run a safe research test.",
             pakistan_date=today.isoformat(),
             latest_month_start=last_start.isoformat(),
             elapsed_days=elapsed,
+            test_mode=False,
         )
 
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -194,7 +197,8 @@ only URLs you actually found in the grounded search results. No markdown or code
     common = {
         "pakistan_date": today.isoformat(),
         "elapsed_days": elapsed,
-        "research_phase": "intensified",
+        "research_phase": "forced_test" if force_research else "intensified",
+        "test_mode": force_research,
         "hijri_year": current_year,
         "month_number": next_month,
         "month_name": MONTH_NAMES[next_month],
@@ -237,6 +241,15 @@ only URLs you actually found in the grounded search results. No markdown or code
             raise ValueError("No official/government source was supplied.")
     except (ValueError, TypeError, KeyError) as exc:
         return stop("needs_review", f"Proposed update failed safety validation: {exc}", **common)
+
+    if force_research:
+        return stop(
+            "test_complete",
+            "Gemini research and all automatic-update safety checks passed in test mode; no repository files were changed.",
+            **common,
+            validation="passed",
+            proposed_start_date=start.isoformat(),
+        )
 
     target.update({
         "gregorian_start_date": start.isoformat(),
