@@ -72,11 +72,18 @@
     {
       "month": 5,
       "month_name": "Jumada al-Awwal",
-      "gregorian_start_date": "",
-      "status": "pending",
-      "confidence": "unknown",
-      "sources": [],
-      "notes": ""
+      "gregorian_start_date": "2026-10-13",
+      "status": "verified",
+      "confidence": "high",
+      "sources": [
+        {
+          "source_name": "Associated Press of Pakistan (APP)",
+          "description": "APP reported that the Jamadi-ul-Awwal 1448 AH moon was sighted in Pakistan on Monday evening, October 12, and that the Ministry of Religious Affairs issued an official notification. The first day of Jamadi-ul-Awwal was announced for Tuesday, October 13, 2026.",
+          "url": "https://www.app.com.pk/national/jamadi-ul-awwal-moon-sighted-in-pakistan-first-day-to-fall-on-october-13/",
+          "published_at": "2026-10-12"
+        }
+      ],
+      "notes": "The Central Ruet-e-Hilal Committee announced that the Jamadi-ul-Awwal 1448 AH moon was sighted in Pakistan on Monday evening; therefore 1 Jumada al-Awwal 1448 falls on Tuesday, October 13, 2026."
     },
     {
       "month": 6,
