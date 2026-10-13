@@ -2,12 +2,12 @@
   "country": "PK",
   "country_name": "Pakistan",
   "hijri_year": 1448,
-  "month": 4,
-  "month_name": "Rabi al-Thani",
-  "month_start": "2026-09-14",
+  "month": 5,
+  "month_name": "Jumada al-Awwal",
+  "month_start": "2026-10-13",
   "status": "verified",
   "confidence": "high",
-  "updated_at": "2026-09-14",
+  "updated_at": "2026-10-13",
   "source": "data/1448.json",
-  "notes": ""
+  "notes": "Pakistan's Central Ruet-e-Hilal Committee confirmed the moon sighting; first day of Jumada al-Awwal is October 13, 2026."
 }
