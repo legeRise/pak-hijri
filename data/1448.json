@@ -88,11 +88,24 @@
     {
       "month": 6,
       "month_name": "Jumada al-Thani",
-      "gregorian_start_date": "",
-      "status": "pending",
-      "confidence": "unknown",
-      "sources": [],
-      "notes": ""
+      "gregorian_start_date": "2026-11-12",
+      "status": "verified",
+      "confidence": "high",
+      "sources": [
+        {
+          "source_name": "AAJ News",
+          "description": "AAJ News reported the Central Ruet-e-Hilal Committee announcement that the Jumada al-Thani 1448 AH crescent was not sighted anywhere in Pakistan. The Ministry of Religious Affairs also issued an official notification; therefore 1 Jumada al-Thani falls on Thursday, November 12, 2026.",
+          "url": "https://www.aaj.tv/news/30524955/jumada-al-thani-moon-sighting-announcement",
+          "published_at": "2026-11-10"
+        },
+        {
+          "source_name": "Business Recorder (reporting APP)",
+          "description": "Business Recorder, citing the Ministry of Religious Affairs, reported that the moon was not sighted anywhere in Pakistan and that the new Islamic month would begin on Thursday, November 12, 2026.",
+          "url": "https://www.brecorder.com/news/amp/40448338",
+          "published_at": "2026-11-11"
+        }
+      ],
+      "notes": "The Central Ruet-e-Hilal Committee announced that the Jumada al-Thani 1448 AH moon was not sighted in Pakistan; the month of Jumada al-Awwal completed 30 days, so 1 Jumada al-Thani 1448 falls on Thursday, November 12, 2026."
     },
     {
       "month": 7,
